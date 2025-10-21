@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Treinamentos Brasil | Cursos técnicos presenciais e in company</title>
+  <meta name="description" content="Treinamentos Brasil: cursos técnicos em mecânica, elétrica, tecnologia e IA. Presenciais e in company, com certificação reconhecida, instrutores certificados e prática em laboratório." />
+  <meta name="keywords" content="treinamentos, cursos técnicos, mecânica automotiva, elétrica automotiva, elétrica industrial, máquinas pesadas, informática, inteligência artificial, CFTV" />
+  <link rel="canonical" href="https://www.treinamentosbrasil.com.br/" />
+  <meta name="theme-color" content="#004000" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Treinamentos Brasil | Cursos técnicos presenciais e in company" />
+  <meta property="og:description" content="Capacitação prática com certificação reconhecida. Mecânica, elétrica, tecnologia e IA." />
+  <meta property="og:url" content="https://www.treinamentosbrasil.com.br/" />
+  <meta property="og:image" content="./assets/logo_tb.png" />
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script type="application/ld+json" id="org-json"></script>
+  <script type="application/ld+json" id="courses-json"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="#home" aria-label="Treinamentos Brasil">
+        <img src="./assets/logo_tb.png" alt="Treinamentos Brasil" class="brand__logo" width="40" height="40" />
+        <div class="brand__text">
+          <strong>Treinamentos Brasil</strong>
+          <span>O MELHOR PARA OS MELHORES</span>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#descricoes">Descrições</a>
+        <a href="#parceiros">Parceiros</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div class="header__cta">
+        <a class="btn btn--outline" id="download-logo" href="#">Baixar Logo (SVG)</a>
+        <a class="btn btn--gold" href="https://wa.me/5519971636969" target="_blank" rel="noopener">Fale Conosco</a>
+      </div>
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <div class="hero__badges">
+            <div class="badge">
+              <span class="badge__dot"></span>
+              Certificados reconhecidos
+            </div>
+            <div class="badge">
+              <span class="badge__dot"></span>
+              Instrutores certificados
+            </div>
+            <div class="badge">
+              <span class="badge__dot"></span>
+              Laboratórios reais
+            </div>
+          </div>
+          <h1>Treinamentos técnicos que geram emprego, renda e resultado</h1>
+          <p>
+            Sede equipada e estrutura móvel para cursos presenciais e in company. Conteúdos atualizados nas áreas de
+            mecânica, elétrica, tecnologia e IA.
+          </p>
+          <div class="hero__actions">
+            <a href="#catalogo" class="btn btn--gold">Ver Catálogo</a>
+            <a href="#contato" class="btn btn--outline">Solicitar Proposta</a>
+          </div>
+          <div class="hero__features">
+            <div class="feature">
+              <div class="feature__icon">🔧</div>
+              <div class="feature__title">Prática real</div>
+              <div class="feature__desc">Equipamentos e scanners</div>
+            </div>
+            <div class="feature">
+              <div class="feature__icon">🧠</div>
+              <div class="feature__title">Tecnologia</div>
+              <div class="feature__desc">IA e automação</div>
+            </div>
+            <div class="feature">
+              <div class="feature__icon">📈</div>
+              <div class="feature__title">Resultados</div>
+              <div class="feature__desc">Foco em empregabilidade</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero__card">
+          <div class="glass card">
+            <img src="./assets/logo_tb.png" alt="Logo TB" width="72" height="72" />
+            <div class="card__brand">
+              <strong>Treinamentos Brasil</strong>
+              <span>O MELHOR PARA OS MELHORES</span>
+            </div>
+            <div class="card__desc">Presencial e in company • Certificados reconhecidos • Instrutores certificados</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalogo" class="section">
+      <div class="container">
+        <h2>Catálogo de Cursos</h2>
+        <p class="muted">Cursos modulares com carga horária definida e foco 100% prático.</p>
+        <div class="catalog" id="catalog-grid"></div>
+      </div>
+    </section>
+
+    <section id="descricoes" class="section section--tint">
+      <div class="container">
+        <h2>Descrições dos Cursos</h2>
+        <p class="muted">O que você aprende na prática e como transformar isso em renda.</p>
+        <div class="descriptions" id="desc-grid"></div>
+      </div>
+    </section>
+
+    <section id="parceiros" class="section">
+      <div class="container">
+        <h2>Parceiros e Marcas</h2>
+        <p class="muted">Marcas referência com as quais atuamos e sugerimos em nossos treinamentos.</p>
+        <div class="partners" id="partners"></div>
+      </div>
+    </section>
+
+    <section id="contato" class="section section--cta">
+      <div class="container">
+        <div class="cta glass">
+          <div>
+            <h3>Solicite uma proposta</h3>
+            <p class="muted">Cursos presenciais e in company. Responderemos em até 1 dia útil.</p>
+            <p class="muted small">Ao enviar, seus dados ficam salvos apenas no seu navegador.</p>
+          </div>
+          <form id="lead-form" class="form">
+            <input type="text" name="nome" placeholder="Nome" required />
+            <input type="email" name="email" placeholder="E-mail" required />
+            <input type="tel" name="telefone" placeholder="Telefone" />
+            <textarea name="interesse" placeholder="Interesse (curso, turma, in company...)" required></textarea>
+            <div class="form__actions">
+              <button type="submit" class="btn btn--gold">Enviar</button>
+              <a class="link" id="whats-link" href="https://wa.me/5519971636969" target="_blank" rel="noopener">Preferir WhatsApp?</a>
+            </div>
+            <div class="form__note" id="form-note" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="./assets/logo_tb.png" width="24" height="24" alt="TB" />
+        <span>© <span id="year"></span> Treinamentos Brasil</span>
+      </div>
+      <nav class="footer__nav">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#descricoes">Descrições</a>
+        <a href="#parceiros">Parceiros</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
