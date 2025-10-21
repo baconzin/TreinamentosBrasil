@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="112" height="112" rx="16" fill="#FFFFFF"/>
+  <!-- Stylized T -->
+  <rect x="26" y="30" width="76" height="12" rx="6" fill="#004000"/>
+  <rect x="26" y="30" width="12" height="68" rx="6" fill="#004000"/>
+  <!-- Stylized B built with two arcs and a gold cut at the bottom -->
+  <path d="M54 30 h24 a18 18 0 0 1 0 36 H54 z" fill="#004000"/>
+  <path d="M54 66 h26 a16 16 0 0 1 0 32 H54 z" fill="#004000"/>
+  <path d="M54 96 h26 a16 16 0 0 1 -6 10 H54 z" fill="url(#g)"/>
+</svg>
