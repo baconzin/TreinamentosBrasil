@@ -24,7 +24,7 @@ const SiteHeader = () => {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 border-b border-black/5">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <LogoTB size={44} />
+        <LogoTB size={40} />
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <a href="#catalogo" className="hover:opacity-80">Catálogo</a>
           <a href="#descricoes" className="hover:opacity-80">Descrições</a>
@@ -48,9 +48,10 @@ const Hero = () => {
     <Section id="home" className="pt-8 md:pt-12">
       <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-black/10 bg-white/60 backdrop-blur-2xl text-xs mb-6">
-            <ShieldCheck size={14} className="text-green-800" />
-            Certificados reconhecidos • Instrutores certificados • Laboratórios reais
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-6">
+            <div className="px-3 py-2 rounded-lg border border-black/10 bg-white/60 backdrop-blur-2xl text-xs">Certificados reconhecidos</div>
+            <div className="px-3 py-2 rounded-lg border border-black/10 bg-white/60 backdrop-blur-2xl text-xs">Instrutores certificados</div>
+            <div className="px-3 py-2 rounded-lg border border-black/10 bg-white/60 backdrop-blur-2xl text-xs">Laboratórios reais</div>
           </div>
           <h1 className="text-3xl md:text-5xl font-extrabold leading-tight" style={{ color: colors.green }}>
             Treinamentos técnicos que geram emprego, renda e resultado
@@ -173,34 +174,73 @@ const Catalogo = () => {
   );
 };
 
-const Descricoes = () => {
-  return (
-    <Section id="descricoes" className="bg-gradient-to-b from-white to-emerald-50/40">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl font-extrabold" style={{ color: colors.green }}>Descrições dos Cursos</h2>
-        <p className="text-black/70 mt-2">O que você aprende na prática e como transformar isso em renda.</p>
-        <div className="mt-8 grid md:grid-cols-2 gap-6">
-          {catalog.map((c) => (
-            <Card key={c.id} className="border-black/5">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 size={20} style={{ color: colors.gold }} />
-                  <div>
-                    <div className="font-semibold" style={{ color: colors.green }}>{c.title} • {c.hours}h</div>
-                    <p className="text-black/70 mt-1">{c.summary}</p>
-                  </div>
-                </div>
-                <div className="mt-4 text-sm text-black/70">
-                  <span className="font-medium" style={{ color: colors.green }}>Como ganhar dinheiro: </span>
-                  {c.income}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </Section>
-  );
+const slugMap = {
+  Bosch: "bosch",
+  NGK: "ngk",
+  Delphi: "delphi",
+  "Magneti Marelli": "magnetimarelli",
+  Schaeffler: "schaeffler",
+  Vonder: "vonder",
+  Makita: "makita",
+  Wurth: "wurth",
+  Gedore: "gedore",
+  "Tramontina Pro": "tramontina",
+  Raven: "raven",
+  "Snap-on": "snapon",
+  Stanley: "stanley",
+  Karcher: "karcher",
+  "3M": "3m",
+  SKF: "skf",
+  Gates: "gates",
+  Cobreq: "cobreq",
+  Mahle: "mahle",
+  Monroe: "monroe",
+  Valvoline: "valvoline",
+  Castrol: "castrol",
+  Shell: "shell",
+  Texaco: "texaco",
+  Mobil: "mobil",
+  Motul: "motul",
+  "NGK-NTK": "ngk",
+  Continental: "continental",
+  Denso: "denso",
+  Hella: "hella",
+  "Mann Filter": "mannfilter",
+  Spal: "spal",
+  Tecfil: "tecfil",
+  Bardahl: "bardahl",
+  Luxcar: "luxcar",
+  "Würth": "wurth",
+  Intelbras: "intelbras",
+  "Schneider Electric": "schneiderelectric",
+  Siemens: "siemens",
+  "Pial Legrand": "legrand",
+  Tigre: "tigre",
+  Tramontina: "tramontina",
+  Steck: "steck",
+  Daneva: "daneva",
+  Philips: "philips",
+  Osram: "osram",
+  Furukawa: "furukawaelectric",
+  Foxlux: "foxlux",
+  Multilaser: "multilaser",
+  Margirius: "margirius",
+  Elgin: "elgin",
+  Enerbras: "enerbras",
+  Intel: "intel",
+  AMD: "amd",
+  NVIDIA: "nvidia",
+  Microsoft: "microsoft",
+  ASUS: "asus",
+  Lenovo: "lenovo",
+  Dell: "dell",
+  HP: "hp",
+  Corsair: "corsair",
+  Kingston: "kingstontechnology",
+  Logitech: "logitech",
+  "TP-Link": "tplink",
+  Gigabyte: "gigabyte",
+  "OpenAI (ChatGPT)": "openai",
 };
 
 const Parceiros = () => {
@@ -215,14 +255,20 @@ const Parceiros = () => {
             <div key={group}>
               <div className="text-sm font-semibold mb-3" style={{ color: colors.gold }}>{group}</div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {items.map((name) => (
-                  <div
-                    key={name}
-                    className="px-3 py-3 rounded-xl border border-black/10 bg-white hover:shadow-sm transition-colors"
-                  >
-                    <div className="text-sm text-black/80">{name}</div>
-                  </div>
-                ))}
+                {items.map((name) => {
+                  const slug = slugMap[name];
+                  const src = slug ? `https://cdn.simpleicons.org/${encodeURIComponent(slug)}/004000` : null;
+                  return (
+                    <div key={name} className="px-3 py-3 rounded-xl border border-black/10 bg-white flex items-center justify-center h-16">
+                      {src ? (
+                        // eslint-disable-next-line jsx-a11y/alt-text
+                        <img src={src} className="max-h-8 opacity-90" />
+                      ) : (
+                        <div className="text-sm text-black/80">{name}</div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           ))}
@@ -267,7 +313,7 @@ const Contato = () => {
                 </Button>
                 <a
                   className="text-sm underline"
-                  href="https://wa.me/5500000000000"
+                  href="https://wa.me/5519971636969"
                   target="_blank"
                   rel="noreferrer"
                 >
