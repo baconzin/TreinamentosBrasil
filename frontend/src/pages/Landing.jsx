@@ -9,6 +9,7 @@ import { Textarea } from "../components/ui/textarea";
 import { Toaster } from "../components/ui/toaster";
 import { toast } from "sonner";
 import { ShieldCheck, Hammer, Cpu, LineChart, ArrowRight, CheckCircle2 } from "lucide-react";
+import { WordExportButton } from "../components/WordExportButton";
 
 const colors = brand.colors;
 
@@ -29,9 +30,12 @@ const SiteHeader = () => {
           <a href="#parceiros" className="hover:opacity-80">Parceiros</a>
           <a href="#contato" className="hover:opacity-80">Contato</a>
         </nav>
-        <Button className="rounded-full px-5" style={{ background: colors.gold, color: "#111" }}>
-          Fale Conosco
-        </Button>
+        <div className="flex items-center gap-3">
+          <WordExportButton />
+          <Button className="rounded-full px-5" style={{ background: colors.gold, color: "#111" }}>
+            Fale Conosco
+          </Button>
+        </div>
       </div>
     </header>
   );
