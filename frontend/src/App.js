@@ -1,15 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Landing from "./pages/Landing";
-import "./index.css";
+import { useEffect } from "react";
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-      </Routes>
-    </BrowserRouter>
-  );
+export default function App() {
+  useEffect(() => {
+    // Redirect preview root to the static site for accurate visualization
+    if (typeof window !== "undefined") {
+      window.location.replace("/site/index.html");
+    }
+  }, []);
+  return null;
 }
-
-export default App;
