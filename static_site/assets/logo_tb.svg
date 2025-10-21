@@ -6,7 +6,6 @@
       <stop offset="100%" stop-color="#B8860B"/>
     </linearGradient>
   </defs>
-  <rect x="8" y="8" width="112" height="112" rx="16" fill="#FFFFFF"/>
   <!-- Stylized T -->
   <rect x="26" y="30" width="76" height="12" rx="6" fill="#004000"/>
   <rect x="26" y="30" width="12" height="68" rx="6" fill="#004000"/>
