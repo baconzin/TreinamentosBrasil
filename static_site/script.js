@@ -41,18 +41,18 @@ const partnerGroups = [
 ];
 
 // Helpers
-const $ = (sel,el=document)=>el.querySelector(sel); const $$=(sel,el=document)=>el.querySelectorAll(sel);
+const $ = (sel,el=document)=>el.querySelector(sel);
 
 function renderCatalog(){
   const col1 = document.createElement('div'); col1.className='accordion';
   const col2 = document.createElement('div'); col2.className='accordion';
-  const mid = Math.ceil(catalog.length/2);
+  const mid = Math.ceil(catalog.length / 2);
   function block(c, alt){
     const details = document.createElement('details');
     const summary = document.createElement('summary');
     summary.innerHTML = `<span>${c.title}</span><span class="muted">${c.hours}h</span>`;
     const panel = document.createElement('div'); panel.className='panel';
-    c.modules.forEach((m,i)=>{
+    c.modules.forEach((m)=>{
       const row = document.createElement('div');
       row.className = 'module'+(alt?' module--alt':'');
       row.innerHTML = `<span>${m.title}</span><span class="muted">${m.hours}h</span>`;
@@ -64,11 +64,12 @@ function renderCatalog(){
   catalog.slice(0,mid).forEach(c=>col1.appendChild(block(c,false)));
   catalog.slice(mid).forEach(c=>col2.appendChild(block(c,true)));
   const grid = document.getElementById('catalog-grid');
+  grid.innerHTML = '';
   grid.appendChild(col1); grid.appendChild(col2);
 }
 
 function renderDescriptions(){
-  const wrap = document.getElementById('desc-grid');
+  const wrap = document.getElementById('desc-grid'); wrap.innerHTML='';
   catalog.forEach(c=>{
     const card = document.createElement('div'); card.className='desc-card';
     card.innerHTML = `<h4>${c.title} • ${c.hours}h</h4><p>${c.summary}</p><p class="small"><strong style="color:${brand.colors.green}">Como ganhar dinheiro:</strong> ${c.income}</p>`;
@@ -77,15 +78,14 @@ function renderDescriptions(){
 }
 
 function renderPartners(){
-  const root = document.getElementById('partners');
+  const root = document.getElementById('partners'); root.innerHTML='';
   partnerGroups.forEach(g=>{
     const group = document.createElement('div'); group.className='partner-group';
     group.innerHTML = `<h3>${g.name}</h3>`;
     const grid = document.createElement('div'); grid.className='logo-grid';
     g.items.forEach(({n,s})=>{
       const card = document.createElement('div'); card.className='logo-card';
-      const img = document.createElement('img');
-      img.alt = n; img.loading = 'lazy';
+      const img = document.createElement('img'); img.alt = n; img.loading='lazy';
       img.src = `https://cdn.simpleicons.org/${encodeURIComponent(s)}/004000`;
       img.onerror = ()=>{ card.innerHTML = `<div class="logo-fallback">${n}</div>`; };
       card.appendChild(img); grid.appendChild(card);
@@ -100,10 +100,14 @@ function handleLeadForm(){
   form.addEventListener('submit', (e)=>{
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form).entries());
+    // salva no navegador (mock)
     const leads = JSON.parse(localStorage.getItem('tb_leads')||'[]');
     leads.push({...data, createdAt: new Date().toISOString()});
     localStorage.setItem('tb_leads', JSON.stringify(leads));
-    note.textContent = 'Recebemos seu contato. Em breve retornaremos!';
+    // abre whatsapp com mensagem pré-preenchida
+    const msg = encodeURIComponent(`Olá! Meu nome é ${data.nome}. E-mail: ${data.email}. Telefone: ${data.telefone||'-'}. Interesse: ${data.interesse}`);
+    window.open(`https://wa.me/5519971636969?text=${msg}`, '_blank');
+    note.textContent = 'Abrimos o WhatsApp com sua mensagem. Obrigado!';
     form.reset();
   });
 }
@@ -118,22 +122,11 @@ function navToggle(){
   });
 }
 
-function downloadLogo(){
-  const a = document.getElementById('download-logo');
-  a.addEventListener('click', (e)=>{
-    e.preventDefault();
-    fetch('./assets/logo_tb.svg').then(r=>r.blob()).then(b=>{
-      const url = URL.createObjectURL(b); const link = document.createElement('a');
-      link.href = url; link.download = 'treinamentos-brasil-logo.svg'; link.click(); URL.revokeObjectURL(url);
-    });
-  });
-}
-
 function injectJSONLD(){
   const org = {
     '@context':'https://schema.org', '@type':'Organization',
     name: brand.name, url: 'https://www.treinamentosbrasil.com.br/',
-    logo: 'https://www.treinamentosbrasil.com.br/assets/logo_tb.svg',
+    logo: 'https://www.treinamentosbrasil.com.br/assets/logo_tb.png',
     sameAs: []
   };
   document.getElementById('org-json').textContent = JSON.stringify(org);
@@ -149,7 +142,7 @@ function injectJSONLD(){
 
 function init(){
   document.getElementById('year').textContent = new Date().getFullYear();
-  renderCatalog(); renderDescriptions(); renderPartners(); handleLeadForm(); navToggle(); downloadLogo(); injectJSONLD();
+  renderCatalog(); renderDescriptions(); renderPartners(); handleLeadForm(); navToggle(); injectJSONLD();
 }
 
 window.addEventListener('DOMContentLoaded', init);
